@@ -1,0 +1,7 @@
+venv
+*.csv
+*.json
+STL
+BuildFiles
+*.png
+CB_*
