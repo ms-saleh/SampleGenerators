@@ -5,3 +5,5 @@ STL
 BuildFiles
 *.png
 CB_*
+__*
+credentials.txt
