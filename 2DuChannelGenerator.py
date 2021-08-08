@@ -43,9 +43,6 @@ output,error = subprocess.Popen(Arguments,stdout = subprocess.PIPE,
 #Print the return messages
 print(output.decode("utf-8"))
 
-with open("input_template.json") as f:
-    Inputs_JSON = json.load(f)
-
 # Generate template for MicroChannel nTop
 Arguments = [exePath]               #nTopCL path
 Arguments.append("-t")              #json template argument
