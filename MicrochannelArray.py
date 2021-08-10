@@ -13,11 +13,10 @@ from Class_buildSample import *
 def runConventionalWorkflow():
     path=os.getcwd()
     setCredentials(path,'credentials.txt')
-    
-    sample.exePath = r"C:/Program Files/nTopology/nTopology/ntopCL.exe"
-    
+
     sample = buildSample(path)
     sample.createTree()
+    sample.exePath = r"C:/Program Files/nTopology/nTopology/ntopCL.exe"
     sample.readDOE()
     
     sample.readCustomBlock()

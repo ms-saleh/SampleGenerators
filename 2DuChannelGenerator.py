@@ -218,14 +218,8 @@ for line in Lines:
 f.close()        
 
 
-Arguments = [exePath]
-Arguments.append("-p")
-Arguments.append((("%s\\BuildFiles\\Bottom_job.recipe") %Current_Directory)
-                 .replace("\\",r"/"))
 
-print(" ".join(Arguments))
 
-subprocess.call(Arguments)
 print ("--- %.1f seconds ---" % (time.time() - start_time))
 
 #%% Slice the uChannel container

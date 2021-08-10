@@ -9,10 +9,10 @@ nTopology Platform and create buildfiles in Nanoscribe
 """
 import os
 import subprocess
-import time
 import json
 import shutil
 from PIL import Image, ImageDraw, ImageFont
+from getpass import getpass 
 
 class buildSample(object):
     exePath = r"C:/Program Files/nTopology/nTopology/ntopCL.exe"
@@ -73,10 +73,14 @@ class buildSample(object):
     def nTopTemplate(self):
         # Generate template for MicroChannel nTop
         Arguments = [self.exePath]               #nTopCL path
+        Arguments.append("-u")                                  #username argument
+        Arguments.append(os.environ.get('nTop_user'))           #nTop username
+        Arguments.append("-w")                                  #password argument
+        Arguments.append(os.environ.get('nTop_pass'))           #nTop pass
         Arguments.append("-t")              #json template argument
         Arguments.append(self.customBlock)      #.ntop notebook file path
         #nTopCL call with arguments
-        print(" ".join(Arguments))
+        #print(" ".join(Arguments))
         output,error = subprocess.Popen(Arguments,stdout = subprocess.PIPE, 
                    stderr= subprocess.PIPE).communicate()
         #Print the return messages
@@ -85,13 +89,17 @@ class buildSample(object):
     def nTopRun(self,jsonFile,nTopFile):
         # Generate template for MicroChannel nTop
         Arguments = [self.exePath]                              #nTopCL path
+        Arguments.append("-u")                                  #username argument
+        Arguments.append(os.environ.get('nTop_user'))           #nTop username
+        Arguments.append("-w")                                  #password argument
+        Arguments.append(os.environ.get('nTop_pass'))           #nTop pass
         Arguments.append("-j")                                  #json input argument
         Arguments.append(jsonFile)                              #input json file
         Arguments.append("-o")                                  #output argument
         Arguments.append(self.path+"\\"+"out.json")             #output json path
         Arguments.append(nTopFile)                              #.ntop notebook file path
         #nTopCL call with arguments
-        print("\n".join(Arguments))
+        #print("\n".join(Arguments))
         output,error = subprocess.Popen(Arguments,stdout = subprocess.PIPE, 
                    stderr= subprocess.PIPE).communicate()
         #Print the return messages
